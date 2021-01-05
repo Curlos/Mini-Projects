@@ -29,59 +29,53 @@ class Triangle extends Shape {
 }
 
 class Square extends Shape {
-    base: number;
-    height: number;
-    sides: Array<number>
+    side: number
 
-    constructor(base: number, height: number, sides: Array<number>) {
+    constructor(side: number) {
         super()
-        this.base = base
-        this.height = height;
-        this.sides = sides;
+        this.side = side
     }
     area(): number {
-        return (this.base * this.height) / 2;
+        return this.side ** 2
     }
     perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+        return this.side * 4
     }
 }
 
 class Rectangle extends Shape {
-    base: number;
-    height: number;
-    sides: Array<number>
+    width: number
+    height: number
 
-    constructor(base: number, height: number, sides: Array<number>) {
+    constructor(width: number, height: number) {
         super()
-        this.base = base
+        this.width = width;
         this.height = height;
-        this.sides = sides;
     }
     area(): number {
-        return (this.base * this.height) / 2;
+        return this.width * this.height;
     }
     perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+        return 2 * (this.width + this.height);
     }
 }
 
 class Parallelogram extends Shape {
     base: number;
     height: number;
-    sides: Array<number>
+    sideLength: number
 
-    constructor(base: number, height: number, sides: Array<number>) {
+    constructor(base: number, height: number, sideLength: number) {
         super()
         this.base = base
         this.height = height;
-        this.sides = sides;
+        this.sideLength = sideLength;
     }
     area(): number {
-        return (this.base * this.height) / 2;
+        return this.base * this.height;
     }
     perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+        return 2 * (this.base + this.sideLength);
     }
 }
 
@@ -168,15 +162,15 @@ const triangle = new Triangle(20, 30, [10, 20, 20])
 console.log(`Triangle - Area: ${triangle.area()}, Perimeter: ${triangle.perimeter()}`)
 console.log('------------------------------------')
 
-const square = new Square(20, 30, [10, 20, 20])
+const square = new Square(20)
 console.log(`Square - Area: ${square.area()}, Perimeter: ${square.perimeter()}`)
 console.log('------------------------------------')
 
-const rectangle = new Rectangle(20, 30, [10, 20, 20])
+const rectangle = new Rectangle(20, 30)
 console.log(`Rectangle - Area: ${rectangle.area()}, Perimeter: ${rectangle.perimeter()}`)
 console.log('------------------------------------')
 
-const parallelogram = new Parallelogram(20, 30, [10, 20, 20])
+const parallelogram = new Parallelogram(20, 30, 40)
 console.log(`Parallelogram - Area: ${parallelogram.area()}, Perimeter: ${parallelogram.perimeter()}`)
 console.log('------------------------------------')
 
