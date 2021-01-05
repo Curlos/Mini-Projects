@@ -1,4 +1,5 @@
 def changeReturn(cost, moneyGiven):
+    ''' The user enters a cost and then the amount of money given. The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change. '''
     QUARTER = 0.25
     DIME = 0.10
     NICKEL = 0.05
