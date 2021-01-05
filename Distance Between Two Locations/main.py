@@ -1,4 +1,3 @@
-from functools import partial
 from geopy import distance
 from geopy.geocoders import Nominatim
 
