@@ -12,11 +12,11 @@ class Shape {
 class Triangle extends Shape {
     base: number;
     height: number;
-    sides: Array<number>
+    sides: Array<number>;
 
     constructor(base: number, height: number, sides: Array<number>) {
-        super()
-        this.base = base
+        super();
+        this.base = base;
         this.height = height;
         this.sides = sides;
     }
@@ -32,8 +32,8 @@ class Square extends Shape {
     side: number
 
     constructor(side: number) {
-        super()
-        this.side = side
+        super();
+        this.side = side;
     }
     area(): number {
         return this.side ** 2
@@ -44,11 +44,11 @@ class Square extends Shape {
 }
 
 class Rectangle extends Shape {
-    width: number
-    height: number
+    width: number;
+    height: number;
 
     constructor(width: number, height: number) {
-        super()
+        super();
         this.width = width;
         this.height = height;
     }
@@ -63,11 +63,11 @@ class Rectangle extends Shape {
 class Parallelogram extends Shape {
     base: number;
     height: number;
-    sideLength: number
+    sideLength: number;
 
     constructor(base: number, height: number, sideLength: number) {
-        super()
-        this.base = base
+        super();
+        this.base = base;
         this.height = height;
         this.sideLength = sideLength;
     }
@@ -80,78 +80,66 @@ class Parallelogram extends Shape {
 }
 
 class Trapezoid extends Shape {
-    base: number;
+    base1: number;
+    base2: number;
+    sideLength1: number;
+    sideLength2: number;
     height: number;
-    sides: Array<number>
 
-    constructor(base: number, height: number, sides: Array<number>) {
-        super()
-        this.base = base
+    constructor(base1: number, base2: number, sideLength1: number, sideLength2: number, height: number) {
+        super();
+        this.base1 = base1;
+        this.base2 = base2;
+        this.sideLength1 = sideLength1;
+        this.sideLength2 = sideLength2;
         this.height = height;
-        this.sides = sides;
     }
     area(): number {
-        return (this.base * this.height) / 2;
+        return ((this.base1 + this.base2) / 2) * this.height;
     }
     perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+        return this.base1+ this.base2 + this.sideLength1 + this.sideLength2;
     }
 }
 
 class Circle extends Shape {
-    base: number;
-    height: number;
-    sides: Array<number>
+    radius: number;
 
-    constructor(base: number, height: number, sides: Array<number>) {
-        super()
-        this.base = base
-        this.height = height;
-        this.sides = sides;
+    constructor(radius: number) {
+        super();
+        this.radius = radius;
     }
     area(): number {
-        return (this.base * this.height) / 2;
+        return Number((Math.PI * (this.radius ** 2)).toFixed(2));
     }
-    perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+    circumfrence(): number {
+        return Number((2 * Math.PI * this.radius).toFixed(2))
     }
 }
 
 class Ellipse extends Shape {
-    base: number;
-    height: number;
-    sides: Array<number>
+    a: number;
+    b: number;
 
-    constructor(base: number, height: number, sides: Array<number>) {
-        super()
-        this.base = base
-        this.height = height;
-        this.sides = sides;
+    constructor(a: number, b: number) {
+        super();
+        this.a = a;
+        this.b = b;
     }
     area(): number {
-        return (this.base * this.height) / 2;
-    }
-    perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+        return Number((Math.PI * this.a * this.b).toFixed(2));
     }
 }
 
 class Sector extends Shape {
-    base: number;
-    height: number;
-    sides: Array<number>
+    radius: number;
 
-    constructor(base: number, height: number, sides: Array<number>) {
-        super()
-        this.base = base
-        this.height = height;
-        this.sides = sides;
+    constructor(radius: number) {
+        super();
+        this.radius = radius;
     }
     area(): number {
-        return (this.base * this.height) / 2;
-    }
-    perimeter(): number {
-        return this.sides.reduce((accumulator, currentValue) => accumulator + currentValue);
+        return 1/2 * (this.radius ** 2);
     }
 }
 
@@ -174,18 +162,18 @@ const parallelogram = new Parallelogram(20, 30, 40)
 console.log(`Parallelogram - Area: ${parallelogram.area()}, Perimeter: ${parallelogram.perimeter()}`)
 console.log('------------------------------------')
 
-const trapezoid = new Trapezoid(20, 30, [10, 20, 20])
+const trapezoid = new Trapezoid(5, 12, 4, 15, 16)
 console.log(`Trapezoid - Area: ${trapezoid.area()}, Perimeter: ${trapezoid.perimeter()}`)
 console.log('------------------------------------')
 
-const circle = new Circle(20, 30, [10, 20, 20])
-console.log(`Circle - Area: ${circle.area()}, Perimeter: ${circle.perimeter()}`)
+const circle = new Circle(20)
+console.log(`Circle - Area: ${circle.area()}, Circumfrence: ${circle.circumfrence()}`)
 console.log('------------------------------------')
 
-const ellipse = new Ellipse(20, 30, [10, 20, 20])
-console.log(`Ellipse - Area: ${ellipse.area()}, Perimeter: ${ellipse.perimeter()}`)
+const ellipse = new Ellipse(20, 21)
+console.log(`Ellipse - Area: ${ellipse.area()}`)
 console.log('------------------------------------')
 
-const sector = new Sector(20, 30, [10, 20, 20])
-console.log(`Sector - Area: ${sector.area()}, Perimeter: ${sector.perimeter()}`)
+const sector = new Sector(20)
+console.log(`Sector - Area: ${sector.area()}`)
 console.log('------------------------------------')
